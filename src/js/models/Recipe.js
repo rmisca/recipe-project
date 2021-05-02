@@ -2,8 +2,9 @@ import axios from "axios";
 import {proxy} from "../config";
 
 export default class Recipe {
-    constructor(id) {
+    constructor(id, ingredients) {
         this.id = id;
+        this.ingredients = ingredients;
     };
 
     async getRecipe() {
@@ -25,6 +26,7 @@ export default class Recipe {
         const numIng = this.ingredients.length;
         const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
+        return this.time;
     };
 
     calcServings() {
